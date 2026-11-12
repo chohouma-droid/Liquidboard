@@ -14,7 +14,9 @@ jobs:
 
       - name: Extract project
         run: unzip -q LiquidBoard-Android-IME-phone-build.zip -d .
-
+      - name: Fix missing keyboard icon
+        run: |
+          sed -i 's|@mipmap/ic_launcher|@android:drawable/sym_def_app_icon|g' LiquidBoard-Android-IME/app/src/main/res/xml/method.xml
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
